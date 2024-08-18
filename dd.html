@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루 운동 계획</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>하루 운동 계획</h1>
+    <button onclick="generateStretching()">스트레칭 프로그램 생성</button>
+    <button onclick="generateWorkout()">운동 프로그램 생성</button>
+
+    <div id="stretching-result" class="result"></div>
+    <div id="workout-result" class="result"></div>
+
+    <script>
+        const stretchings = ["목 스트레칭", "어깨 스트레칭", "팔 스트레칭", "손목 스트레칭", "허리 스트레칭", "옆구리 스트레칭", "고관절 스트레칭", "허벅지 스트레칭", "종아리 스트레칭", "발목 스트레칭"];
+        const workouts = ["스쿼트", "푸시업", "버피", "플랭크", "런지", "마운틴 클라이머", "점핑 잭", "힙 브릿지", "트라이셉스 딥스", "사이드 런지", "크런치", "바이시클 크런치", "슈퍼맨", "러시안 트위스트", "스텝업", "잭나이프", "와이드 푸시업", "시티드 레그 리프트", "핸드 워크 아웃", "리버스 크런치"];
+
+        function generateStretching() {
+            const selectedStretchings = [];
+            while (selectedStretchings.length < 3) {
+                const randomIndex = Math.floor(Math.random() * stretchings.length);
+                const stretching = stretchings[randomIndex];
+                if (!selectedStretchings.includes(stretching)) {
+                    selectedStretchings.push(stretching);
+                }
+            }
+            document.getElementById("stretching-result").innerHTML = "스트레칭: " + selectedStretchings.join(", ");
+        }
+
+        function generateWorkout() {
+            const selectedWorkouts = [];
+            while (selectedWorkouts.length < 4) {
+                const randomIndex = Math.floor(Math.random() * workouts.length);
+                const workout = workouts[randomIndex];
+                if (!selectedWorkouts.includes(workout)) {
+                    selectedWorkouts.push(workout);
+                }
+            }
+            document.getElementById("workout-result").innerHTML = "운동: " + selectedWorkouts.join(", ");
+        }
+    </script>
+
+</body>
+</html>
